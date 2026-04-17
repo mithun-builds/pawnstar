@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
+  <title>PawnStar — Free Chess Game Analyzer | Stockfish 16</title>
+  <meta name="description" content="Analyze your chess games move-by-move with PawnStar. Paste any PGN to get instant Stockfish 16 evaluations, spot blunders and mistakes, and compare your moves to the engine's best. Free and runs entirely in your browser." />
+  <meta name="keywords" content="chess analyzer, chess game analysis, PGN analyzer, Stockfish 16, chess engine, blunder check, chess review, free chess analyzer, chess coach" />
+  <meta name="author" content="PawnStar" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#111111" />
+  <link rel="canonical" href="https://pawnstar.app/" />
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PawnStar" />
+  <meta property="og:title" content="PawnStar — Free Chess Game Analyzer" />
+  <meta property="og:description" content="Paste your PGN and get move-by-move analysis with Stockfish 16. Spot blunders, mistakes and inaccuracies — see the engine's best move for every position." />
+  <meta property="og:url" content="https://pawnstar.app/" />
+  <meta property="og:image" content="https://pawnstar.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PawnStar — Free Chess Game Analyzer" />
+  <meta name="twitter:description" content="Paste your PGN and get move-by-move analysis with Stockfish 16. Spot blunders, mistakes and inaccuracies instantly." />
+  <meta name="twitter:image" content="https://pawnstar.app/og-image.png" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="apple-touch-icon" href="logo.svg" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo-wrap">
+      <img class="logo-icon" src="logo.svg" alt="PawnStar" />
+      <h1 class="logo-title">PawnStar</h1>
+    </div>
+    <button class="reset-btn" id="navResetBtn" onclick="resetApp()" style="display:none">← New Analysis</button>
+  </header>
+
+  <main class="main">
+
+    <!-- ── INPUT CARD ── -->
+    <div class="card" id="inputCard">
+
+      <div class="field-group">
+        <p class="field-label">I PLAYED AS</p>
+        <div class="color-toggle">
+          <button class="color-btn active" id="btnWhite" onclick="setColor('white')">♔ White</button>
+          <button class="color-btn"        id="btnBlack" onclick="setColor('black')">♚ Black</button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="pgnInput">PGN</label>
+        <textarea id="pgnInput"
+          placeholder="Paste PGN here...&#10;1. d4 d5 2. Nf3 Nf6 ..."
+          rows="8"
+          spellcheck="false"></textarea>
+      </div>
+
+      <div class="or-divider"><span>or</span></div>
+
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+        📋 Upload .pgn
+      </div>
+      <input type="file" id="fileInput" accept=".pgn" style="display:none" />
+
+      <button class="load-btn" id="analyzeBtn" onclick="startAnalysis()">Load Game →</button>
+
+      <p class="hint-text">
+        Try a sample: <span class="sample-link" onclick="loadSample()">The Immortal Game (1851)</span>
+      </p>
+    </div>
+
+    <!-- ── PROGRESS CARD ── -->
+    <div class="card progress-card" id="progressCard" style="display:none">
+      <img class="progress-queen" src="logo.svg" alt="" />
+      <h2 class="progress-title">Analyzing your game</h2>
+      <p class="progress-sub" id="progressSub">Starting engine…</p>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-moves" id="progressMoves"></p>
+    </div>
+
+    <!-- ── RESULTS ── -->
+    <div id="resultsSection" style="display:none">
+      <div id="summaryStrip" class="stats-row"></div>
+
+      <div class="nav-layout">
+        <div class="card nav-card nav-left">
+          <div id="navBoard" class="nav-board"></div>
+          <div id="navEval" class="nav-eval"></div>
+          <div class="nav-controls">
+            <button class="nav-btn" id="navFirst" onclick="navFirst()" title="First move">&#x23EE;</button>
+            <button class="nav-btn" id="navPrev" onclick="navPrev()" title="Previous move">&#x2190;</button>
+            <span class="nav-counter" id="navCounter">0/0</span>
+            <button class="nav-btn" id="navNext" onclick="navNext()" title="Next move">&#x2192;</button>
+            <button class="nav-btn" id="navLast" onclick="navLast()" title="Last move">&#x23ED;</button>
+          </div>
+          <p class="nav-move-label hint" id="navMoveLabel">Press → to begin</p>
+          <p class="nav-keys-hint">← → arrow keys also work</p>
+        </div>
+        <div id="navCommentary" class="nav-right"></div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>PawnStar · Powered by local Stockfish 16</p>
+  </footer>
+
+  <script src="chess.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

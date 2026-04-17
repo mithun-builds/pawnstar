@@ -1,0 +1,28 @@
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+Copyright (C) 2026 PawnStar contributors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+Full license: https://www.gnu.org/licenses/gpl-3.0.html
+
+---
+
+This project bundles third-party components under their own licenses:
+
+- Stockfish 16 (stockfish-16.js, stockfish-nnue-16-single.wasm,
+  nn-5af11540bbfe.nnue): GPLv3 — https://stockfishchess.org/
+- chess.js: BSD 2-Clause — https://github.com/jhlywa/chess.js
+- Cburnett chess pieces (pieces/*.svg): CC BY-SA 3.0 —
+  https://en.wikipedia.org/wiki/User:Cburnett
+- Poppins font (fonts/*.woff2): SIL Open Font License 1.1 —
+  https://fonts.google.com/specimen/Poppins

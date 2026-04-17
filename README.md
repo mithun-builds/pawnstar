@@ -27,6 +27,17 @@ python3 -m http.server 8080
 
 Then open http://localhost:8080
 
+## Deploying your own copy
+
+Pure static site — no build step. After forking:
+
+- **GitHub Pages**: Settings → Pages → Source: `main` branch, `/ (root)`. Live at `https://USERNAME.github.io/REPO/`.
+- **Netlify / Vercel / Cloudflare Pages**: drop the folder in, or connect the repo. Zero config.
+
+> The NNUE weights file (`nn-5af11540bbfe.nnue`) is ~38MB — GitHub Pages serves it fine; double-check bandwidth / file-size limits on other hosts.
+
+Remember to update the canonical URL and Open Graph `og:url` / `og:image` in `index.html` to your own domain.
+
 ## License
 
 GPL v3. See [LICENSE](LICENSE) for third-party component attributions (Stockfish, chess.js, Cburnett pieces, Poppins font).

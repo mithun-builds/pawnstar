@@ -4,6 +4,8 @@ A browser-based chess game analyzer powered by Stockfish 16. Paste any PGN, step
 
 **Live site:** https://mithun-builds.github.io/pawnstar/
 
+![PawnStar — chess game analyzer with side-by-side played vs best-move comparison](screenshot.png)
+
 ## Features
 
 - **Stockfish 16 NNUE** running locally in a Web Worker — no API, no rate limits
